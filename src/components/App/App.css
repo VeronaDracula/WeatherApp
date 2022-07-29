@@ -1,0 +1,18 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-style: normal;
+    font-family: 'Inter', sans-serif;
+    background: radial-gradient(at top, #177245, #000);
+    color: #fff;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+    max-width: 788px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
