@@ -45,6 +45,7 @@
 .now-weather__box {
     position: absolute;
     left: 0;
+    max-width: 150px;
 }
 
 .now-weather__icon {

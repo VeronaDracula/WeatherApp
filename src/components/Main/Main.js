@@ -10,16 +10,20 @@ function Main(props) {
 
 
 
-
     return (
         <main className="content">
             <div className="content__box container">
                 <section className="today">
-                    <TodayNow />
-                    <TodayForecast />
+                    <TodayNow currentLocation={props.currentLocation}
+                              currentWeather={props.currentWeather}
+                              descriptionWeather={props.descriptionWeather}
+                              todayAstro={props.todayAstro}
+                    />
+                    <TodayForecast todayHours={props.todayHours}/>
                 </section>
 
-                <Forecast />
+                <Forecast forecastTomorrow = {props.forecastTomorrow}
+                          forecastAfterTomorrow = {props.forecastAfterTomorrow}/>
             </div>
         </main>
     );
