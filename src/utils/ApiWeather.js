@@ -35,7 +35,7 @@ class ApiWeather {
 }
 
 
-const url = 'http://api.weatherapi.com/v1';
+const url = 'https://api.weatherapi.com/v1';
 const key = 'f313994b9ee548cb96e135147222507';
 const city = 'london';
 
