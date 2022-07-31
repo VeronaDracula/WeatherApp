@@ -6,7 +6,7 @@ import Header from '../Header/Header.js';
 import Main from '../Main/Main.js';
 import Footer from '../Footer/Footer.js';
 
-import {apiWeather} from "../../utils/ApiWeather";
+import {ApiWeather} from "../../utils/ApiWeather";
 
 function App() {
 
@@ -20,10 +20,21 @@ function App() {
     const [forecastTomorrow, setForecastTomorrow] = React.useState([]);
     const [forecastAfterTomorrow, setForecastAfterTomorrow] = React.useState([]);
 
+    const [city, setCity] = React.useState('london');
 
+
+    //получаем ключевое слово
+    function readKeyword(keyword) {
+        setCity(keyword)
+    }
+
+    const url = 'https://api.weatherapi.com/v1';
+    const key = 'f313994b9ee548cb96e135147222507';
 
     //текущая погода
     React.useEffect(() => {
+
+        const apiWeather = new ApiWeather(url, key, city);
         apiWeather
             .getCurrentWeather()
             .then(data => {
@@ -32,10 +43,12 @@ function App() {
                 setDescriptionWeather(data.current.condition)
             })
             .catch(err => console.log(err))
-    }, []);
+    }, [city]);
 
 
     React.useEffect(() => {
+
+        const apiWeather = new ApiWeather(url, key, city);
 
         apiWeather
             .getForecastWeather()
@@ -47,7 +60,7 @@ function App() {
             })
             .catch(err => console.log(err))
 
-    }, []);
+    }, [city]);
 
 
 
@@ -57,7 +70,7 @@ function App() {
       <div className="App">
         <div className="page">
 
-            <Header/>
+            <Header onSearchCity={readKeyword}/>
             <Main currentWeather={currentWeather}
                   currentLocation={currentLocation}
                   descriptionWeather={descriptionWeather}
