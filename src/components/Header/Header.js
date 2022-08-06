@@ -36,7 +36,7 @@ function Header(props) {
                     <div className="search-form__input-box">
                         <input className="search-form__input" placeholder="City" type="text"  id="search"
                                name="search" onChange={handleChangeKeyword} required/>
-                        <span className={errorMessageClassName}>Некорректный ввод</span>
+                        <span className={errorMessageClassName}>Incorrect input</span>
                     </div>
                     <button className="search-form__btn" type="submit">Search</button>
                 </form>
