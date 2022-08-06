@@ -1,7 +1,6 @@
 import React from 'react';
 
 import './TodayNow.css';
-import {apiWeather} from "../../utils/ApiWeather";
 
 function TodayNow(props) {
 
@@ -22,9 +21,10 @@ function TodayNow(props) {
 
     return (
         <section className="today-now">
-            <h1 className="location"><span className="location__city">{props.currentLocation.name}</span>,
-                <span className="location__country">{props.currentLocation.country}</span>
-            </h1>
+            <div className="location">
+                <h1 className="location__city">{props.currentLocation.name},</h1>
+                <p className="location__country">{props.currentLocation.country}</p>
+            </div>
 
             <div className="now-date">
                 <p className="now-date__time">Now <span className="now-date__time-number">{separationTime(props.currentLocation.localtime)}</span></p>
@@ -54,7 +54,7 @@ function TodayNow(props) {
                     <div className="other-info__icon other-info__icon--type--wind"></div>
                     <p className="other-info__text">
                         <span className="other-info__wind-speed">{props.currentWeather.wind_kph}</span>kph,
-                        <span className="other-info__wind-direction">{props.currentWeather.wind_dir}</span>
+                        <span className="other-info__wind-direction"> {props.currentWeather.wind_dir}</span>
                     </p>
                 </li>
 

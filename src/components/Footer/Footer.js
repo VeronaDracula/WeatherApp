@@ -6,7 +6,7 @@ function Footer() {
     return (
         <footer className="footer">
             <div className="footer__container container">
-                <a className="footer__link" target="_blank" href="https://www.flaticon.com/ru/free-icons/"
+                <a className="footer__link" target="_blank" href="https://www.flaticon.com/ru/authors/freepik"
                    title="капля иконки"> Иконки параметров погоды от Freepik - Flaticon
                 </a>
 

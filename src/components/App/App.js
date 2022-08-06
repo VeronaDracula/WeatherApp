@@ -1,4 +1,3 @@
-// import logo from '../../logo.svg';
 import './App.css';
 import React from "react";
 
@@ -20,6 +19,8 @@ function App() {
     const [forecastTomorrow, setForecastTomorrow] = React.useState([]);
     const [forecastAfterTomorrow, setForecastAfterTomorrow] = React.useState([]);
 
+    const [isValid, setIsValid] = React.useState(true);
+
     const [city, setCity] = React.useState('london');
 
 
@@ -40,9 +41,15 @@ function App() {
             .then(data => {
                 setCurrentLocation(data.location);
                 setCurrentWeather(data.current);
-                setDescriptionWeather(data.current.condition)
+                setDescriptionWeather(data.current.condition);
+                setIsValid(true);
             })
-            .catch(err => console.log(err))
+            .catch(err => {
+                if (err === 400) {
+                    setIsValid(false);
+                }
+                console.log(`Ошибка: ${err}`);
+            })
     }, [city]);
 
 
@@ -56,9 +63,15 @@ function App() {
                 setTodayHours(data.forecast.forecastday[0].hour);
                 setTodayAstro(data.forecast.forecastday[0].astro);
                 setForecastTomorrow(data.forecast.forecastday[1]);
-                setForecastAfterTomorrow(data.forecast.forecastday[2])
+                setForecastAfterTomorrow(data.forecast.forecastday[2]);
+                setIsValid(true);
             })
-            .catch(err => console.log(err))
+            .catch(err => {
+                if (err === 400) {
+                    setIsValid(false);
+                }
+                console.log(`Ошибка: ${err}`);
+            })
 
     }, [city]);
 
@@ -70,7 +83,7 @@ function App() {
       <div className="App">
         <div className="page">
 
-            <Header onSearchCity={readKeyword}/>
+            <Header onSearchCity={readKeyword} isValid={isValid}/>
             <Main currentWeather={currentWeather}
                   currentLocation={currentLocation}
                   descriptionWeather={descriptionWeather}
